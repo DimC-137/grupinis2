@@ -30,6 +30,11 @@ const Kom2Baud1Kiekis = document.querySelector('#prk4 span');
 const Kom2Baud2Kiekis = document.querySelector('#prk5 span');
 const Kom2Baud3Kiekis = document.querySelector('#prk6 span');
 
+// Taškų kiekis
+
+const kom1task = document.querySelector('#tm1tsk');
+const kom2task = document.querySelector('#tm2tsk');
+
 // Įrašai
 
 const irasas = document.querySelector('#notes');
@@ -69,26 +74,38 @@ let komanda2 = 0;
 const K1taskai1 = _ => {
     komanda1 = komanda1 + parseInt(Kom1Task1.value);
     irasas.innerHTML += `1 komanda pelnė ${Kom1Task1.value} tašką ir padidina rezultatą iki ${komanda1}! ${Date(Date.now()).match(/\d\d:\d\d:\d\d/).toString()}<br>`;
+    kom1task.innerText = komanda1;
+    kom2task.innerText = komanda2;
 }
 const K1taskai2 = _ => {
     komanda1 = komanda1 + parseInt(Kom1Task2.value);
     irasas.innerHTML += `1 komanda pelnė ${Kom1Task1.value} taškus ir padidina rezultatą iki ${komanda1}! ${Date(Date.now()).match(/\d\d:\d\d:\d\d/).toString()}<br>`;
+    kom1task.innerText = komanda1;
+    kom2task.innerText = komanda2;
 }
 const K1taskai3 = _ => {
     komanda1 = komanda1 + parseInt(Kom1Task3.value);
     irasas.innerHTML += `1 komanda pelnė ${Kom1Task1.value} taškus ir padidina rezultatą iki ${komanda1}! ${Date(Date.now()).match(/\d\d:\d\d:\d\d/).toString()}<br>`;
+    kom1task.innerText = komanda1;
+    kom2task.innerText = komanda2;
 }
 const K2taskai1 = _ => {
     komanda2 = komanda2 + parseInt(Kom2Task1.value);
     irasas.innerHTML += `2 komanda pelnė ${Kom2Task1.value} tašką ir padidina rezultatą iki ${komanda2}! ${Date(Date.now()).match(/\d\d:\d\d:\d\d/).toString()}<br>`;
+    kom1task.innerText = komanda1;
+    kom2task.innerText = komanda2;
 }
 const K2taskai2 = _ => {
     komanda2 = komanda2 + parseInt(Kom2Task2.value);
     irasas.innerHTML += `2 komanda pelnė ${Kom2Task2.value} taškus ir padidina rezultatą iki ${komanda2}! ${Date(Date.now()).match(/\d\d:\d\d:\d\d/).toString()}<br>`;
+    kom1task.innerText = komanda1;
+    kom2task.innerText = komanda2;
 }
 const K2taskai3 = _ => {
     komanda2 = komanda2 + parseInt(Kom2Task3.value);
     irasas.innerHTML += `2 komanda pelnė ${Kom2Task3.value} taškus ir padidina rezultatą iki ${komanda2}! ${Date(Date.now()).match(/\d\d:\d\d:\d\d/).toString()}<br>`;
+    kom1task.innerText = komanda1;
+    kom2task.innerText = komanda2;
 }
 
 // Kėlinių renderis
@@ -105,15 +122,15 @@ const kelinioPabaiga = _ => {
         irasas.innerHTML += `Varžybos baigėsi!<br>`;
         Kom1Task1.disabled = true;
         Kom1Task2.disabled = true;
-        Kom1Task3.disabled = true; 
+        Kom1Task3.disabled = true;
         Kom2Task1.disabled = true;
-        Kom2Task2.disabled = true; 
-        Kom2Task3.disabled = true; 
+        Kom2Task2.disabled = true;
+        Kom2Task3.disabled = true;
         Kom1Zaid1Praz.disabled = true;
-        Kom1Zaid2Praz.disabled = true; 
-        Kom1Zaid3Praz.disabled = true; 
+        Kom1Zaid2Praz.disabled = true;
+        Kom1Zaid3Praz.disabled = true;
         Kom2Zaid1Praz.disabled = true;
-        Kom2Zaid2Praz.disabled = true; 
+        Kom2Zaid2Praz.disabled = true;
         Kom2Zaid3Praz.disabled = true;
         Baigt.disabled = true;
         alert('Varžybos baigėsi!');
@@ -123,7 +140,7 @@ const kelinioPabaiga = _ => {
 // Naujų varžybų renderis
 
 const naujosVarzybos = _ => {
-    init();
+    location.reload();
 }
 
 // Mygtukai
@@ -144,19 +161,4 @@ Kom2Task3.addEventListener('click', K2taskai3);
 
 Baigt.addEventListener('click', kelinioPabaiga);
 
-Pradet.addEventListener('click', naujosVarzybos)
-
-const init = _ => {
-    Kom1Baud1Kiekis.innerText = 0;
-    Kom1Baud2Kiekis.innerText = 0;
-    Kom1Baud3Kiekis.innerText = 0;
-    Kom2Baud1Kiekis.innerText = 0;
-    Kom2Baud2Kiekis.innerText = 0;
-    Kom2Baud3Kiekis.innerText = 0;
-    Baigt.disabled = false;
-    keliniuKiekis = 0;
-    irasas.innerHTML = '';
-}
-
-init();
-
+Pradet.addEventListener('click', naujosVarzybos);
